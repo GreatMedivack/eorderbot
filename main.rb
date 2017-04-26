@@ -19,12 +19,12 @@ Telegram::Bot::Client.run(token) do |bot|
     when '/list'
       date = Time.now.strftime("%Y-%m-%d")	
       list = db.execute( "select * from positions where created_at=?",  date)
-      sum = db.execute( "select sum(price) from positions where created_at=?", date ).join
+      sum = db.execute( "select sum(price) from positions where created_at=?", date ).join.to_i
       text = ""
       list.each do |row|
       	text += "#{row[0]} - #{row[1]}р.\n"
       end	
-      text+= "Total: #{sum}р."
+      text+= "Итого: #{sum}р."
       bot.api.sendMessage(chat_id: message.chat.id, text: text)
     end
   end
