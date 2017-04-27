@@ -1,2 +1,0 @@
-DATABASE = eorderbot.db
-TOKEN = 364246804:AAHPnTNcuiprwoXs6NTiOt44pBYeAg_GYI8
