@@ -1,11 +1,10 @@
 require 'telegram/bot'
 require 'sqlite3'
+require 'config.rb'
 
-db = SQLite3::Database.new "eorderbot.db"
+db = SQLite3::Database.new DATABASE
 
-token = ''
-
-Telegram::Bot::Client.run(token) do |bot|
+Telegram::Bot::Client.run(TOKEN) do |bot|
   bot.listen do |message|
   	msg = message.text.partition(/\A\/[a-z]+/).reject { |c| c.empty? }
   	command = msg.first
